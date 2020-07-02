@@ -17,7 +17,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((users) => this.setState({ monsters: users }));
   }
-
+  //pra nao ficar com bind => arrow function
   handleChange = (e) => {
     this.setState({ searchField: e.target.value });
   };
