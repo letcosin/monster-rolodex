@@ -17,7 +17,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((users) => this.setState({ monsters: users }));
   }
-  //pra nao ficar com bind => arrow function
+
   handleChange = (e) => {
     this.setState({ searchField: e.target.value });
   };
@@ -29,6 +29,7 @@ class App extends React.Component {
     );
     return (
       <div className="App">
+        <h1>Monster Rolodex</h1>
         <SearchBox
           placeholder="Search Monsters"
           handleChange={this.handleChange}
