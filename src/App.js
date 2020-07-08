@@ -4,12 +4,12 @@ import { SearchBox } from "./components/search-box/search-box.component";
 import "./App.css";
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       monsters: [],
       searchField: "",
-      title: "Monster Rolodex",
+      title: this.props.increment,
     };
   }
 
@@ -23,8 +23,15 @@ class App extends React.Component {
   handleChange = (event) => {
     this.setState({
       searchField: event.target.value,
-      title: event.target.value,
     });
+    this.setState(
+      (prevState, prevProps) => {
+        return {
+          title: prevState.title + prevProps.increment,
+        };
+      },
+      () => console.log(this.state.title)
+    );
   };
 
   render() {
@@ -34,7 +41,7 @@ class App extends React.Component {
     );
     return (
       <div className="App">
-        <h1>{title}</h1>
+        <h1>{state.title}</h1>
         <SearchBox
           placeholder="Search Monsters"
           handleChange={this.handleChange}
